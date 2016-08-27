@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# From Airblader's config
 
 ACPI=$(acpi -b)
 CHARGE=$(echo -n "${ACPI}" | egrep -o "[0-9]+%" | sed -e "s,%,,g")

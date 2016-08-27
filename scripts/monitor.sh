@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# From Airblader's config
 
 xrandr -q | grep -wv eDP1 | grep connected | \
 while read line; do
