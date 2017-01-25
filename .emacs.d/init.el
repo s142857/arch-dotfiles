@@ -48,6 +48,7 @@
 (add-hook 'elpy-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'prog-mode-hook #'rainbow-delimiters-mode)
 (define-key racket-mode-map (kbd "C-c C-c") 'racket-test)
+(define-key racket-mode-map (kbd "C-c C-r") 'racket-run)
 
 ;;org-mode
 (require 'org)
@@ -70,8 +71,10 @@
 
 ;; Themes
 (if (display-graphic-p) 
-    (load-theme 'dracula)
+    (load-theme 'dracula t)
   (load-theme 'zenburn))
+(setq custom-safe-themes t)
+
 
 (add-to-list 'custom-theme-load-path "~/.emacs.d/blackboard-theme.el"); My third favourite theme
 
@@ -111,6 +114,7 @@
 (require 'latex)
 (add-hook 'LaTeX-mode-hook #'flyspell-mode)
 (add-hook 'LaTeX-mode-hook #'auto-complete-mode)
+(add-hook 'LaTeX-mode-hook #'latex-math-mode)
 
 ;; Unbinding C-z
 (global-unset-key [(control z)])
@@ -119,7 +123,6 @@
 
 ;; Latex shortcuts
 (define-key LaTeX-mode-map (kbd "C-c f") 'LaTeX-math-frac)
-(define-key LaTeX-mode-map (kbd "C-c b") "\\textbf{}")
 (define-key LaTeX-mode-map (kbd "C-c z") "\\mathbb{Z}")
 (define-key LaTeX-mode-map (kbd "C-c n") "\\mathbb{N}")
 (define-key LaTeX-mode-map (kbd "C-c r") "\\mathbb{R}")
@@ -129,15 +132,12 @@
 (define-key LaTeX-mode-map (kbd "C-c e") 'LaTeX-math-exists)
 (define-key LaTeX-mode-map (kbd "C-c 2") "^{2}")
 (define-key LaTeX-mode-map (kbd "C-c 3") "^{3}")
-(define-key LaTeX-mode-map (kbd "C-c e") 'LaTeX-math-epsilon)
-(define-key LaTeX-mode-map (kbd "C-c d") "\\frac{dy}{dx}") ;'LaTeX-math-delta
-(define-key LaTeX-mode-map (kbd "C-c l") 'LaTeX-math-lambda)
+(define-key LaTeX-mode-map (kbd "C-c d") "\\frac{dy}{dx}")
 (define-key LaTeX-mode-map (kbd "C-c m") "\\lim_{x \\rightarrow a}")
 (define-key LaTeX-mode-map (kbd "C-c h") "\\lim_{h \\rightarrow 0}")
 (define-key LaTeX-mode-map (kbd "C-c (") "\\left(")
 (define-key LaTeX-mode-map (kbd "C-c 0") "_{0}")
 (define-key LaTeX-mode-map (kbd "C-c q") "\\hfill \\ensuremath \\square")
-(define-key LaTeX-mode-map (kbd "C-c p") 'LaTeX-math-partial)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -147,9 +147,10 @@
  '(custom-safe-themes
    (quote
     ("f641bdb1b534a06baa5e05ffdb5039fb265fde2764fbfd9a90b0d23b75f3936b" "427fed191e7a766152e59ef0e2904283f436dbbe259b9ccc04989f3acde50a55" "0e219d63550634bc5b0c214aced55eb9528640377daf486e13fb18a32bf39856" "84d2f9eeb3f82d619ca4bfffe5f157282f4779732f48a5ac1484d94d5ff5b279" "3c83b3676d796422704082049fc38b6966bcad960f896669dfc21a7a37a748fa" "345f8f92edc3508574c61850b98a2e0a7a3f5ba3bb9ed03a50f6e41546fe2de0" default)))
+ '(org-support-shift-select t)
  '(package-selected-packages
    (quote
-    (blackboard-bold-mode python-django twittering-mode soundcloud auctex-latexmk auto-complete-auctex auto-complete latex-extra zenburn-theme cmake-ide rtags ggtags rainbow-delimiters smex smartparens racket-mode powerline haskell-mode elpy dracula-theme))))
+    (python-docstring java-imports dracula blackboard-bold-mode python-django twittering-mode soundcloud auctex-latexmk auto-complete-auctex auto-complete latex-extra zenburn-theme cmake-ide rtags ggtags rainbow-delimiters smex smartparens racket-mode powerline haskell-mode elpy dracula-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
